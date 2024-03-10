@@ -1,6 +1,7 @@
 import sys 
 sys.path.append('/home/rafaelfabrichimidt/Documentos/projetos/python/estudando_orientacao_a_objeto')
 from modelos.avaliacao import Avaliacao
+from modelos.cardapio.item_cardapio import ItemCardapio
 
 class Restaurante():
     
@@ -14,6 +15,7 @@ class Restaurante():
         self.ativo = ''
         
         self._avaliacao = []
+        self._cardapio = []
         
         Restaurante.restaurantes[self.nome] = [self.categoria, self.ativo]
         
@@ -53,3 +55,17 @@ class Restaurante():
         media = soma / qtd_notas
         
         print(media)        
+
+
+    def adicionar_item_cardapio(self, item):
+        
+        if isinstance(item, ItemCardapio):
+        
+            self._cardapio.append(item)
+            
+    @property
+    def exibir_cardapio(self):
+        
+        print(self.nome)
+        
+        print(self._cardapio)
